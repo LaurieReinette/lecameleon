@@ -37,10 +37,6 @@ class User implements UserInterface
      */
     private $password;
 
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $amount;
 
     /**
      * @ORM\OneToMany(targetEntity=Transaction::class, mappedBy="owner")
@@ -149,17 +145,7 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getAmount(): ?float
-    {
-        return $this->amount;
-    }
-
-    public function setAmount(float $amount): self
-    {
-        $this->amount = $amount;
-
-        return $this;
-    }
+    
 
     /**
      * @return Collection|Transaction[]
