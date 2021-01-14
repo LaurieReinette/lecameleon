@@ -34,6 +34,37 @@
         Votre solde est de: {{ amount }}
     </p>
 
+    <p>
+        <h4>
+            Mes transactions
+        </h4>
+
+<table class="table">
+        <thead>
+            <tr>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Catégorie</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for transaction in user.transactions %}
+            <tr>
+                <td>{{ transaction.amount }}</td>
+                <td>{{ transaction.date ? transaction.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ transaction.type }}</td>
+                <td>{{ transaction.category }}</td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    </p>
+
+
+
     <a href="{{ path('user_index') }}">back to list</a>
 
     <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
