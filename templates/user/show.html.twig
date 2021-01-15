@@ -39,6 +39,8 @@
             Mes transactions
         </h4>
 
+        
+
 <table class="table">
         <thead>
             <tr>
@@ -62,7 +64,32 @@
     </table>
 
     </p>
+    <p>
+        Mes transactions Catégorie Resto:
 
+         <table class="table">
+        <thead>
+            <tr>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Catégorie</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for transaction in transactionsFiltredCategoryResto %}
+            <tr>
+                <td>{{ transaction.amount }}</td>
+                <td>{{ transaction.date ? transaction.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ transaction.type }}</td>
+                <td>{{ transaction.category }}</td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    </p>
 
 
     <a href="{{ path('user_index') }}">back to list</a>

@@ -56,7 +56,6 @@ class User implements UserInterface
         foreach ($transactions as $transaction){
             if ($transaction->getType() === "debit"){
                 $debits = $debits + $transaction->getAmount();
-                dump($debits);
             }
             else {
             $credits = $credits + $transaction->getAmount();
@@ -66,10 +65,21 @@ class User implements UserInterface
 
         return $amount;
     }
-    public function filterByCatecogry() {
-        
-        $transactions = $this->getTransactions();
 
+    public function filter($sortOf, $search) {
+
+        $transactions = $this->getTransactions();
+        $transactionsFiltred =[];
+        // dd($transactions);
+        foreach ($transactions as $transaction){
+            $getter = 'get' . ucfirst($sortOf) . '()';
+            if ($transaction->{"get" . $sortOf}() === $search){
+
+                $transactionsFiltred[] = $transaction;
+            }
+        }
+        
+        return $transactionsFiltred;
     }
 
     public function getId(): ?int
