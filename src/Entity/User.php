@@ -66,6 +66,11 @@ class User implements UserInterface
 
         return $amount;
     }
+    public function filterByCatecogry() {
+        
+        $transactions = $this->getTransactions();
+
+    }
 
     public function getId(): ?int
     {
