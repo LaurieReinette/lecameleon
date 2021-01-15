@@ -64,7 +64,7 @@
     </table>
 
     </p>
-    <p>
+    <div>
         Mes transactions Catégorie Resto:
 
          <table class="table">
@@ -89,7 +89,34 @@
         </tbody>
     </table>
 
-    </p>
+    </div>
+
+        <div>
+        Mes transactions en débit:
+
+         <table class="table">
+        <thead>
+            <tr>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Catégorie</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for transaction in transactionsFiltredTypeDebit %}
+            <tr>
+                <td>{{ transaction.amount }}</td>
+                <td>{{ transaction.date ? transaction.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ transaction.type }}</td>
+                <td>{{ transaction.category }}</td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    </div>
 
 
     <a href="{{ path('user_index') }}">back to list</a>

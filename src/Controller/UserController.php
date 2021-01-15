@@ -55,11 +55,13 @@ class UserController extends AbstractController
     {
         $amount= $user->calculateAmount();
         $transactionsFiltredCategoryResto = $user->filter("Category", "Resto");
-        
+        $transactionsFiltredTypeDebit = $user->filter("Type", "debit");
+
         return $this->render('user/show.html.twig', [
             'user' => $user,
             'amount' =>$amount,
             'transactionsFiltredCategoryResto' =>$transactionsFiltredCategoryResto,
+            'transactionsFiltredTypeDebit' => $transactionsFiltredTypeDebit,
         ]);
     }
 
